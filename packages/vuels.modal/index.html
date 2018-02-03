@@ -12,16 +12,24 @@
             type="button" 
             value="click me"
             v-on:click="showMe" />
-        <vuels-modal />
+        <vuels-modal
+            v-if="modalIsVisible"
+            v-on:close="closeMe" />
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script src="./dist/vuels-modal.js"></script>
     <script>
         const app = new Vue({ 
             el: '#app',
+            data: {
+                modalIsVisible: false
+            },
             methods: {
                 showMe () {
-                    alert('Show Me')
+                    this.modalIsVisible = true
+                }, 
+                closeMe () {
+                    this.modalIsVisible = false
                 }
             }
         })
