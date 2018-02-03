@@ -49,8 +49,11 @@
         name: 'vuels-modal',
         props: {
             themeBackground: {
-                type: 'String',
+                type: String,
                 required: false
+            },
+            themeForeground: {
+                type: String
             }
         },
         methods: {
