@@ -1,5 +1,5 @@
 # Vuels Modal
-[![npm version](https://badge.fury.io/js/vue-button-spinner.svg)](https://badge.fury.io/js/vue-button-spinner)
+[![npm version](https://badge.fury.io/js/%40vuels%2Fmodal.svg)](https://badge.fury.io/js/%40vuels%2Fmodal)
 
 > Simple Vue 2 Modal for easy modal access on a site
 
