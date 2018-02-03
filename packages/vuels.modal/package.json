@@ -1,0 +1,36 @@
+{
+  "name": "vuels.modal",
+  "version": "0.0.1",
+  "description": "Reusable Modal Component",
+  "main": "dist/vuels-modal.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --progress --watch",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "prepare": "npm run build",
+    "serve": "browser-sync start --server --index index.html --files \"**/*.js, *.css\""
+  },
+  "keywords": [
+    "Vue",
+    "Vue Modal",
+    "Modal"
+  ],
+  "author": "Alan J. Fitzpatrick",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.5.13"
+  },
+  "files": [
+    "dist/vuels-modal.js"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0"
+  }
+}

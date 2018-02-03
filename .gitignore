@@ -1,4 +1,9 @@
+# Mac Files
 *.log
 npm-debug.log*
 
+# Install Files
+node_modules/
+
+# Editor Files
 .vscode
