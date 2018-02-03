@@ -47,6 +47,12 @@
 <script>
     export default {
         name: 'vuels-modal',
+        props: {
+            themeBackground: {
+                type: 'String',
+                required: false
+            }
+        },
         methods: {
             close () {
                 this.$emit('close');
