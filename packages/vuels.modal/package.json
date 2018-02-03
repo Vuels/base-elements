@@ -1,6 +1,6 @@
 {
   "name": "@vuels/modal",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Reusable Modal Component",
   "main": "dist/vuels-modal.js",
   "scripts": {
@@ -8,6 +8,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "prepare": "npm run build",
     "serve": "browser-sync start --server --index index.html --files \"**/*.js, *.css\""
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "Vue",
