@@ -12,6 +12,7 @@
                     <header
                         v-if="title !== null"
                         id="modalTitle"
+                        :style="{ color: theme }"
                         class="vuels-modal__header">
                         <slot name="header">
                             <h4
@@ -32,7 +33,9 @@
                                 type="button"
                                 class="btn-filled-in"
                                 aria-label="Close modal"
-                                :theme="theme"
+                                :style="style"
+                                @mouseover="buttonMouseToggle"
+                                @mouseout="buttonMouseToggle"
                                 @click="close">Close</button>
                         </slot>
                     </footer>    
@@ -48,14 +51,31 @@
         props: {
             theme: {
                 type: String,
-                default: 'default'
+                default: '#4AAE9B'
             }, 
             title: {
                 type: String,
                 default: null
             }
         },
+        data () {
+            return {
+                hovering: false,
+                defWhite: '#ffffff'
+            }
+        },
+        computed: {
+            style () {
+                return `
+                    border: 1px solid ${this.theme}; 
+                    background-color: ${this.hovering ? this.defWhite : this.theme}; 
+                    color: ${this.hovering ? this.theme : this.defWhite}`;
+            }
+        },
         methods: {
+            buttonMouseToggle () {
+                this.hovering = !this.hovering
+            },
             close () {
                 this.$emit('close');
             }
@@ -65,18 +85,10 @@
 
 <style lang="scss" scoped>
     $default-font: 16px/1.2 BlinkMacSystemFont, -apple-system, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
-    $primary-color: #4AAE9B;
-    $primary-white: #ffffff;
-
-    @mixin button-color($color, $bg-color) {
-        color: $color;
-        background-color: $bg-color;
-
-        &:hover {
-            color: $bg-color;
-            background-color: $color;
-        }
-    }
+    $backdrop-color: rgba(0, 0, 0, 0.3);
+    $box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+    $border-color: #eeeeee;
+    $background-color: #FFFFFF;
 
     .vuels-modal {
         display: block;
@@ -95,14 +107,14 @@
             width: 100%;
             height: 100%;
 
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: $backdrop-color;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .vuels-modal__content {
-                background: #FFFFFF;
-                box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+                background: $background-color;
+                box-shadow: $box-shadow;
                 overflow-x: auto;
                 display: flex;
                 flex-direction: column;
@@ -115,8 +127,7 @@
                 }
 
                 .vuels-modal__header {
-                    border-bottom: 1px solid #eeeeee;
-                    color: $primary-color;
+                    border-bottom: 1px solid $border-color;
                     justify-content: space-between;
 
                     .vuels-modal__header-title {
@@ -126,7 +137,7 @@
                 }
 
                 .vuels-modal__footer {
-                    border-top: 1px solid #eeeeee;
+                    border-top: 1px solid $border-color;
                     justify-content: flex-end;
                 }
 
@@ -138,16 +149,6 @@
         }
     }
 
-    .btn-close {
-        border: none;
-        font-size: 20px;
-        padding: 0;
-        cursor: pointer;
-        font-weight: bold;
-        color: $primary-color;
-        background: transparent;
-    }
-
     .btn-filled-in {
         border-radius: 3.5px;
         font-size: 1rem;
@@ -155,13 +156,8 @@
         text-decoration: none;
         outline: 0;
 
-        border: 1px solid $primary-color;
         border-radius: 3.5px;
         cursor: pointer;
-
-        &[theme="default"] {
-            @include button-color($primary-color, $primary-white)
-        }
     }
 
     // Transitions
