@@ -39,8 +39,11 @@ export default {
 [Your HTML code]
 ```html
 
-<vuels-modal />
+<vuels-modal
+	theme="red"
+	title="Select Your Option"
+	:close="closeButton" />
 
 ```
-
+> Clicking the close button emits 'close'
 
