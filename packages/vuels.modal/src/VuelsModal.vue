@@ -88,6 +88,7 @@
         width: 100%;
         height: 100%;
         font: $default-font;
+        z-index: 99999;
 
         .vuels-modal__backdrop {
             position: relative;
