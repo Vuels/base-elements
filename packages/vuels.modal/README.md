@@ -22,17 +22,22 @@
 import VuelsModal from '@vuels/modal'
 
 export default {
-	name: 'events-form',
+	name: 'form',
 	data() {
 		return {
-			isLoading: false,
-			status: '',
+			showModal: false
 		}
 	},
 	components: {	
-		VueButtonSpinner
-    }
+		VuelsModal
+    },
+	methods: {
+		toggleModal() {
+			this.showModal = !this.showModal
+		}
+	}
 }
+
 ```
 
 
@@ -40,6 +45,7 @@ export default {
 ```html
 
 <vuels-modal
+	v-if="showModal"
 	theme="red"
 	title="Select Your Option"
 	:close="closeButton" />
