@@ -1,6 +1,6 @@
 {
   "name": "@vuels/modal",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Reusable Modal Component",
   "main": "dist/vuels-modal.js",
   "scripts": {
